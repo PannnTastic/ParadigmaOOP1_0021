@@ -17,7 +17,7 @@ public:
         cout << "Pasien \"" << nama << "\" tidak ada\n";
     }
     void tambahDokter(dokter *);
-    void cetakdokter();
+    void cetakDokter();
 };
 
 class dokter
@@ -36,3 +36,49 @@ public:
     void tambahPasien(Pasien *);
     void cetakPasien();
 };
+
+void Pasien::tambahDokter(dokter *pdokter)
+{
+    daftar_dokter.push_back(pdokter);
+}
+
+void Pasien::cetakDokter()
+{
+    cout << "Daftar Dokter yang menangani pasien "
+            " << this->nama << "
+            ":";
+    for (auto a : daftar_dokter)
+    {
+        cout << a->nama << ", ";
+    }
+    cout << endl;
+}
+
+void dokter::tambahPasien(Pasien *pPasien)
+{
+    pPasien->tambahDokter(this);
+}
+
+void dokter::cetakPasien()
+{
+    cout << "Daftar Pasien dari dokter "
+            " << this->nama << "
+            ":";
+    for (auto a : daftar_pasien)
+    {
+        cout << a->nama << ", ";
+    }
+    cout << endl;
+}
+
+void dokter::cetakPasien()
+{
+    cout << "Daftar Pasien dari dokter "
+            " << this->nama << "
+            ":";
+    for (auto a : daftar_pasien)
+    {
+        cout << a->nama << ", ";
+    }
+    cout << endl;
+}
