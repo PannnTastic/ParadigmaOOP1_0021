@@ -45,7 +45,7 @@ void Pasien::tambahDokter(dokter *pdokter)
 void Pasien::cetakDokter()
 {
     cout << "Daftar Dokter yang menangani pasien \"" << this->nama << "\":\n";
-    for (auto& a : daftar_dokter)// auto digunakan dalam perulangan for untuk secara otomatis menentukan tipe data dri elemen yang diitera
+    for (auto &a : daftar_dokter) // auto digunakan dalam perulangan for untuk secara otomatis menentukan tipe data dri elemen yang diitera
     {
         cout << a->nama << ", ";
     }
@@ -79,4 +79,27 @@ void dokter::cetakPasien()
         cout << a->nama << ", ";
     }
     cout << endl;
+}
+
+int main()
+{
+    dokter *varDokter1 = new dokter("dr.Budi");
+    dokter *varDokter2 = new dokter("dr.Tono");
+    Pasien *varPasien1 = new Pasien("Andi");
+    Pasien *varPasien2 = new Pasien("Lia");
+
+    varDokter1->tambahPasien(varPasien1);
+    varDokter1->tambahPasien(varPasien2);
+    varDokter2->tambahPasien(varPasien1);
+
+    varDokter1->cetakPasien();
+    varDokter2->cetakPasien();
+
+    varPasien1->cetakDokter();
+    varPasien2->cetakDokter();
+    
+    delete varPasien1;
+    delete varPasien2;
+    delete varDokter1;
+    delete varDokter2;
 }
